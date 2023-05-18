@@ -2,8 +2,8 @@
 ## В этом репозитории представлен простой echo бот (с командой /m и echo стикеров) с технологией webhook-ов.
 
 Для работы этого бота, да и как в целом для работы webhook-ов на [__`aiogram`__](https://github.com/aiogram), нам 
-необходимо скачать [__`ngrok`__](https://ngrok.com/) для своего пк или vps. После этого заходим через `__Windows PowerShell__` в 
-папку с установленным файлом (Можно так сделать написав `set-location 'путь к папке'`), 
+необходимо скачать [__`ngrok`__](https://ngrok.com/) для своего пк или vps. После этого заходим через __`Windows PowerShell`__ в 
+папку с установленным файлом (Можно так сделать написав __`set-location 'путь к папке'`__), 
 получаем [__`authtoken`__](https://dashboard.ngrok.com/get-started/your-authtoken) на сайте после пишем: 
 ```
 chmod +x ngrok
@@ -21,6 +21,6 @@ chmod +x ngrok
 если вы не хотите чтобы вам присылало сообщение о запуске и остановке просто не вводите в саму последнюю строку параметр admin_list, 
 вот ссылка на бота для получения своего user_id в телеграм [__`@username_to_id_bot`__](https://t.me/username_to_id_bot). 
 Запускайте и пробуйте. И если вы пишете своего aiogram бота, то просто вместо строки executor.start_polling(dp, skip_updates = True) 
-вставте строку `__webhook_pooling(dp, token_tg, port=8080)__` эти 3 параметра обязательны, остальное опциональны, 
-не забудьте написать `__from webhook import webhook_pooling__`. 
+вставте строку __`webhook_pooling(dp, token_tg, port=8080)`__ эти 3 параметра обязательны, остальное опциональны, 
+не забудьте написать __`from webhook import webhook_pooling`__. 
 ### Если возникли или проблемы вопросы пишите [__`@simeonlimon`__](https://t.me/simeonlimon).
