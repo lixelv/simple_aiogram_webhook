@@ -2,8 +2,8 @@
 ## В этом репозитории представлен простой echo бот (с командой /m и echo стикеров) с технологией webhook-ов.
 
 Для работы этого бота, да и как в целом для работы webhook-ов на [__`aiogram`__](https://github.com/aiogram), нам 
-необходимо скачать [__`ngrok`__](https://ngrok.com/) для своего пк или vps. После этого заходим через __`Windows PowerShell`__ в 
-папку с установленным файлом (Можно так сделать написав __`set-location 'путь к папке'`__), 
+необходимо скачать [__`ngrok`__](https://ngrok.com/) для своего пк или vps. После заходим через __`Windows PowerShell`__ в 
+папку с установленным файлом (Напишите в  __`Windows PowerShell`__ это: __`set-location 'путь к папке'`__), 
 получаем [__`authtoken`__](https://dashboard.ngrok.com/get-started/your-authtoken) на сайте после пишем: 
 ```
 chmod +x ngrok
