@@ -1,10 +1,11 @@
 from webhook import webhook_pooling
 from aiogram import Bot, Dispatcher, types
+from os import environ
 
-OWNER_ID = 'YOUR_USER_ID'  # you can get it here https://t.me/username_to_id_bot
+OWNER_ID = environ['MYID']  # you can get it here https://t.me/username_to_id_bot
 ADMIN_LIST: list = [OWNER_ID]  # optional add some admins ids
 
-token_tg: str = 'YOUR_TELEGRAM_API_TOKEN'
+token_tg: str = environ['TELEGRAM']
 
 bot = Bot(token_tg)
 Bot.set_current(bot)  # in some cases you might get exception that your current bot instance is not defined so this will solve your problem
