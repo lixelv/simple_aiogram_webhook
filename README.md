@@ -1,31 +1,32 @@
 # aiogram-webhook
 ## NGROK
 
-Для работы этого бота, да и как в целом для работы webhook-ов на [__`aiogram`__](https://github.com/aiogram), нам 
-необходимо скачать [__`ngrok`__](https://ngrok.com/) для своего пк или vps. После заходим через __`Windows PowerShell`__ в 
-папку с установленным файлом (Напишите в  __`Windows PowerShell`__ это: __`set-location 'путь к папке'`__), 
-получаем [__`authtoken`__](https://dashboard.ngrok.com/get-started/your-authtoken) на сайте после пишем: 
+To work with this bot, and generally to work with webhooks on [aiogram](https://github.com/aiogram), 
+we need to download [ngrok](https://ngrok.com/) for your PC or VPS. After that, open __Windows PowerShell__ 
+and navigate to the folder with the installed file (Type in __Windows PowerShell__: __`set-location 'path to folder'`__). 
+Obtain the [authtoken](https://dashboard.ngrok.com/get-started/your-authtoken) from the website, then run the following command:
 ```
 chmod +x ngrok
 ./ngrok authtoken (Ваш токен). 
 ```
-#### Дальше после введения кода аутентификации мы должны запустить ngrok, пишем:
+#### After entering the authentication code, we need to start ngrok by running the following command:
 ```
 ./ngrok http (port).
  ```
-Порт выбирайте на свое усмотрение, но для работы бота я использовал __`8080`-ый__ порт. 
-Потом нам выведет окно с запущенным __`ngrok`__, там мы копируем первую ссылку после строки __`Forwarding`__ 
-она выглядит как-то так: __`https://6ec8-78-37-108-80.ngrok-free.app`__. Ее нужно вставить когда 
-вы запускаете бота (это я установил в методе __`webhook_polling`__).
-После если вы захотите запустить этого бота, то поменяйте параметр __`YOUR_TELEGRAM_API_TOKEN`__ на ваш __`api`__,
-получить его можно через бота [__`@BotFather`__](https://t.me/BotFather), и поменяйте параметр __`YOUR_USER_ID`__ на ваш __`user_id`__, но это опционально, 
-если вы не хотите чтобы вам присылало сообщение о запуске и остановке просто не вводите в саму последнюю строку параметр __`admin_list`__, 
-вот ссылка на бота для получения своего __`user_id`__ в телеграм [__`@username_to_id_bot`__](https://t.me/username_to_id_bot). 
-Запускайте и пробуйте. 
+You can choose any port you like, but for the bot to work, I used port __8080__. 
+Then a window with the running __ngrok__ will appear. Copy the first URL after the __Forwarding__ line, 
+it should look something like this: __https://6ec8-78-37-108-80.ngrok-free.app__. You need to paste this URL 
+when you start the bot (I set it up in the __webhook_polling__ method).
+If you want to run this bot, replace the parameter __YOUR_TELEGRAM_API_TOKEN__ with your __API token__, 
+which you can obtain from the [BotFather bot](https://t.me/BotFather), and change the parameter __YOUR_USER_ID__ 
+to your __user_id__. However, this is optional. If you don't want to receive a message about the start and stop of the bot, 
+simply do not enter the __admin_list__ parameter in the last line of code. 
+Here is a link to the bot for getting your __user_id__ in Telegram: [username_to_id_bot](https://t.me/username_to_id_bot). 
+Launch and try it out.
 ## WEBHOOK_POLLING
-И если вы пишете своего __`aiogram бота`__, то просто вместо строки __`executor.start_polling(dp, skip_updates = True)`__
-вставте строку __`webhook_pooling(dp, token_tg, port=8080)`__ эти 3 параметра обязательны, остальное опциональны.
-Вот список доп. параметров:
-- __`admin_list`__, в нем вы передаете лист с админами вашего бота, или список из одного элемента - вашего __`id`__.
-- __`startup_message`__ и __`shutdown_message`__, они обозначают что вы хотите отправить при включении и выключении бота списку из __`admin_list`__
-### Если возникли или проблемы вопросы пишите [__`@simeonlimon`__](https://t.me/simeonlimon).
+If you are creating your own __aiogram bot__, instead of the line __executor.start_polling(dp, skip_updates=True)__, 
+use the line __webhook_pooling(dp, token_tg, port=8080)__. These 3 parameters are mandatory, the rest are optional.
+Here is a list of additional parameters:
+- __admin_list__: Pass a list of your bot admins or a list with a single element - your __id__.
+- __startup_message__ and __shutdown_message__: Specify what you want to send to the __admin_list__ when the bot starts and stops.
+### If you have any issues or questions, contact [simeonlimon](https://t.me/simeonlimon).
