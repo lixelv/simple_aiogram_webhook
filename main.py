@@ -1,12 +1,15 @@
 from webhook import webhook_pooling
 from aiogram import Bot, Dispatcher, types
-from os import environ
+from envparse import env
 
-OWNER_ID = environ['MYID']  # you can get it here https://t.me/username_to_id_bot
+
+env.read_envfile('.env')
+OWNER_ID = env('MYID')  # you can get it here https://t.me/username_to_id_bot
 ADMIN_LIST: list = [OWNER_ID]  # optional add some admins ids
 
-token_tg: str = environ['TELEGRAM']
-link = environ['LINK']
+token_tg: str = env('TELEGRAM')
+link = env('LINK')
+port = env('PORT')
 
 bot = Bot(token_tg)
 Bot.set_current(bot)
@@ -31,6 +34,4 @@ async def echo_sticker(message: types.Message):
 
 
 if __name__ == "__main__":
-    webhook_pooling(dp, token_tg, port=8080, link=link,
-        admin_list=ADMIN_LIST,
-                    )
+    webhook_pooling(dp, port, link, ADMIN_LIST)

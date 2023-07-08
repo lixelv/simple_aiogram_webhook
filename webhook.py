@@ -1,10 +1,9 @@
-from aiogram import Bot, Dispatcher, types
+from aiogram import Dispatcher, types
 from aiohttp import web
 
 def webhook_pooling(
-        # 
         dp: Dispatcher = None,
-        port: int = None,
+        port: int | str = None,
         link: str = None,
         admin_list: list | int | str = None,
         startup_message: str = 'Бот был запущен! ☠️ ❱ 👾 ❱ 🤖',
@@ -19,6 +18,7 @@ def webhook_pooling(
 
     # Construct the webhook path using the provided link and token
     webhook_path = f'{link}/{token}'
+    print(webhook_path)
 
     # Add a POST route to handle incoming webhooks
     app.router.add_post(f'/{token}', lambda request: handle_webhook(request, token, dp))

@@ -1,17 +1,21 @@
-# aiogram-webhook
+# INSTALLATION
 ## NGROK
 
 To work with this bot, and generally to work with webhooks on [aiogram](https://github.com/aiogram), 
 we need to download [ngrok](https://ngrok.com/) for your PC or VPS. After that, open __Windows PowerShell__ 
-and navigate to the folder with the installed file (Type in __Windows PowerShell__: __`set-location 'path to folder'`__). 
+and navigate to the folder with the installed file (Type in __Windows PowerShell__: 
+```
+set-location 'path to folder'
+```
+). 
 Obtain the [authtoken](https://dashboard.ngrok.com/get-started/your-authtoken) from the website, then run the following command:
 ```
 chmod +x ngrok
-./ngrok authtoken (Ваш токен). 
+./ngrok authtoken (your_token). 
 ```
-#### After entering the authentication code, we need to start ngrok by running the following command:
+After entering the authentication code, we need to start ngrok by running the following command:
 ```
-./ngrok http (port).
+./ngrok http (port)
  ```
 You can choose any port you like, but for the bot to work, I used port __8080__. 
 Then a window with the running __ngrok__ will appear. Copy the first URL after the __Forwarding__ line, 
@@ -23,9 +27,22 @@ to your __user_id__. However, this is optional. If you don't want to receive a m
 simply do not enter the __admin_list__ parameter in the last line of code. 
 Here is a link to the bot for getting your __user_id__ in Telegram: [username_to_id_bot](https://t.me/username_to_id_bot). 
 Launch and try it out.
-## WEBHOOK_POLLING
+
+## LIBRARIES
+To install libraries which I am using in my repository, just run this command 
+
+```
+pip install путь_до_файла/requests.txt
+```
+
+## .ENV
+In my repository you can see file .env, there I am storing my telegram token, 
+link and my telegram id. Just replace these parameters on yours.
+
+
+# WEBHOOK_POLLING
 If you are creating your own __aiogram bot__, instead of the line __executor.start_polling(dp, skip_updates=True)__, 
-use the line __webhook_pooling(dp, token_tg, port=8080)__. These 3 parameters are mandatory, the rest are optional.
+use the line __webhook_pooling(dp, port, link)__ these 3 parameters are mandatory, the rest are optional.
 Here is a list of additional parameters:
 - __admin_list__: Pass a list of your bot admins or a list with a single element - your __id__.
 - __startup_message__ and __shutdown_message__: Specify what you want to send to the __admin_list__ when the bot starts and stops.
